@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
-	"context"
 	"encoding/json"
 	"flag"
 	"fmt"
