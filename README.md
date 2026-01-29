@@ -49,6 +49,12 @@ webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_HERE"
 audit_log: "/var/log/vault_audit.log"
 ```
 
+**Enable Vault Auditing:**
+
+```bash
+vault audit enable file file_path=/var/log/vault_audit.log
+```
+
 ---
 
 ## Systemd Deployment
