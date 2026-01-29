@@ -230,10 +230,11 @@ func runAudit(cfg *VaultConfig) error {
 
 	// Use tail library for proper log rotation handling
 	t, err := tail.TailFile(cfg.AuditLog, tail.Config{
-		Follow: true,
-		ReOpen: true, // Handles log rotation
-		Poll:   true, // Use polling (more reliable than inotify)
-		Logger: tail.DiscardingLogger, // Suppress tail's own logs
+		Follow:   true,
+		ReOpen:   true, // Handles log rotation
+		Poll:     true, // Use polling (more reliable than inotify)
+		Location: &tail.SeekInfo{Offset: 0, Whence: io.SeekEnd}, // Start at end of file
+		Logger:   tail.DiscardingLogger, // Suppress tail's own logs
 	})
 	if err != nil {
 		return fmt.Errorf("tail audit log: %w", err)
