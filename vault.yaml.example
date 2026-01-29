@@ -1,0 +1,7 @@
+address: "http://127.0.0.1:8200"
+unseal_keys:
+  - "key1"
+  - "key2"
+  - "key3"
+webhook_url: "https://discord.com/api/webhooks/..."
+audit_log: "/var/log/vault_audit.log"
