@@ -1,0 +1,19 @@
+[Unit]
+Description=Vault Warden - Discord Audit Notifier
+After=network.target vault.service
+# Only start if the audit log actually exists
+ConditionPathExists=/var/log/vault_audit.log
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/vault-warden
+# Ensure it restarts on crash
+Restart=always
+RestartSec=5
+# Security: Run as root only if needed for log access, 
+# otherwise use a dedicated user with group access to the log.
+User=root
+WorkingDirectory=/usr/local/bin
+
+[Install]
+WantedBy=multi-user.target
